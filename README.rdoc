@@ -121,7 +121,7 @@ Use <tt>at</tt> or <tt>tick</tt> to show progress in your job's <tt>perform</tt>
 (which is displayed on the resque-web status tab). This will also be where <tt>Killed</tt>
 is raised if the job is killed.
 
-  at(steps_completed, total_steps, "${steps_completed} of #{total_steps} steps completed!")
+  at(steps_completed, total_steps, "#{steps_completed} of #{total_steps} steps completed!")
 
 === Expiration
 
@@ -129,7 +129,7 @@ Since Redis is RAM based, we probably don't want to keep these statuses around f
 (at least until @antirez releases the VM feature). By setting expire_in, all statuses
 and their related keys will expire in expire_in seconds from the last time theyre updated:
 
-  Resque::Plugins::Status::Hash.expire_in = (60 * 60) # 1 hour
+  Resque::Plugins::Status::Hash.expire_in = (1.hour)
 === Testing
 
 Recent versions of Resque introduced `Resque.inline` which changes the behavior to
